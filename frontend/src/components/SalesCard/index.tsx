@@ -1,11 +1,14 @@
 import { useState } from "react";
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import NotificationButton from "../NotificationButton";
+import pt from 'date-fns/locale/pt-BR'
 import "./styles.css";
 
 function SalesCard() {
   const min = new Date(new Date().setDate(new Date().getDate() - 365));
+
+  registerLocale('pt-br', pt)
 
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(new Date());
@@ -20,6 +23,7 @@ function SalesCard() {
             onChange={(date: Date) => setMinDate(date)}
             className="dsmeta-form-control"
             dateFormat="dd/MM/yyyy"
+            locale="pt-br"
           />
         </div>
         <div className="dsmeta-form-control-container">
@@ -28,6 +32,7 @@ function SalesCard() {
             onChange={(date: Date) => setMaxDate(date)}
             className="dsmeta-form-control"
             dateFormat="dd/MM/yyyy"
+            locale={pt}
           />
         </div>
       </div>
