@@ -26,6 +26,8 @@ function SalesCard() {
     axios.get(`${BASE_URL}/sales?minDate=${dMin}&maxDate=${dMax}`)
       .then((res) => {
       setSales(res.data.content);
+    }).catch((err) =>{
+      alert('Nosso site estar fora do ar no momento')
     });
   }, [minDate, maxDate]);
 
@@ -78,7 +80,7 @@ function SalesCard() {
                   <td>R$ {sale.amount.toFixed(2)}</td>
                   <td>
                     <div className="dsmeta-red-btn-container">
-                      <NotificationButton />
+                      <NotificationButton saleId={sale.id}/>
                     </div>
                   </td>
                 </tr>
