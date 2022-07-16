@@ -7,6 +7,7 @@ import axios from "axios";
 import { BASE_URL } from "../../utils/request";
 import "./styles.css";
 import { Sale } from "../../models/sales";
+import { toast } from "react-toastify";
 
 function SalesCard() {
   const min = new Date(new Date().setDate(new Date().getDate() - 365));
@@ -27,7 +28,7 @@ function SalesCard() {
       .then((res) => {
       setSales(res.data.content);
     }).catch((err) =>{
-      alert('Nosso site estar fora do ar no momento')
+      toast.error('Não foi possivel buscar a data das vendas!')
     });
   }, [minDate, maxDate]);
 

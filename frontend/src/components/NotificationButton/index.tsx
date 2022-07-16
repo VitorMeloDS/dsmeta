@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import icon from "../../assets/img/nofication-icon.svg";
 import { BASE_URL } from "../../utils/request";
 import "./styles.css";
@@ -10,9 +11,9 @@ type props = {
 function handleClick(id: number){
   axios.get(`${BASE_URL}/sales/${id}/notification`)
     .then((res) =>{
-       console.log('foi')
+      toast.success("SMS enviado com sucesso!");
     }).catch((err) =>{
-      alert('No momento não foi possivel enviar o SMS tente novamente.')
+      toast.error("Falha ao enviar o SMS!");
     })
 }
 
